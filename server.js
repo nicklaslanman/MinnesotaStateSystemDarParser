@@ -12,7 +12,7 @@ function removeDuplicates(arr){
 }
 
 // let dataBuffer = fs.readFileSync("test.pdf");
-let dataBuffer = fs.readFileSync("SE_DARs.pdf");
+let dataBuffer = fs.readFileSync("DARs.pdf");
 
 pdf(dataBuffer).then(function(data) {
   // number of pages
@@ -58,6 +58,16 @@ pdf(dataBuffer).then(function(data) {
   var majorGpa = data.text.match(majorGpaPattern);
   majorGpa[0] = majorGpa[0].substr(45);
   console.log("Major GPA: " + majorGpa);
+  // Minnnesota Transfer Curriculum
+  var mtcPattern = /[t]\s[a-z]{3}\s[g][a-z]{6}\s/g;
+  var mtc = data.text.match(mtcPattern);
+  if (mtc == undefined) {
+    console.log("Minnnesota Transfer Curriculum Completed: Not Completed")
+  } else if (mtc = "t the general"){
+    console.log("Minnnesota Transfer Curriculum Status: Completed")
+  } else {
+    console.log("Minnnesota Transfer Curriculum Completed: Not Completed")
+  }
   // Courses
   var coursePattern = /[A-Z].[0-9]..[A-Z]{2,5}..[0-9]{2,3}...........[^WF][^WF][^WF].*/g;
   var courses = data.text.match(coursePattern);
