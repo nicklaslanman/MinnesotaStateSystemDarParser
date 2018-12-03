@@ -1,83 +1,82 @@
 const fs = require("fs");
 const pdf = require("pdf-parse");
 
-function removeDuplicates(arr){
-  let unique_array = []
-  for(let i = 0;i < arr.length; i++){
-      if(unique_array.indexOf(arr[i]) == -1){
-          unique_array.push(arr[i])
-      }
-  }
-  return unique_array
-}
-
-// let dataBuffer = fs.readFileSync("test.pdf");
+// let dataBuffer = fs.readFileSync("fileName.pdf");
 let dataBuffer = fs.readFileSync("./DARs/SE_DARs.pdf");
 
 pdf(dataBuffer).then(function(data) {
-  // number of pages
-  // console.log(data.numpages);
-  // // number of rendered pages
-  // console.log(data.numrender);
-  // // PDF info
-  // console.log(data.info);
-  // // PDF metadata
-  // console.log(data.metadata);
-  // // PDF.js version
-  // // check https://mozilla.github.io/pdf.js/getting_started/
-  // console.log(data.version);
-  // // PDF text
-  // console.log(data.text);
-
-  console.log("------------------------------------------------------------------------------");
   
   // DARs parser
+
   // Tech ID
   var techIdPattern = /[:]\d\d\d\d\d\d\d\d\d\d/;
-  var techId = data.text.match(techIdPattern);
-  techId[0] = techId[0].substr(3);
+  var techIdParse = data.text.match(techIdPattern);
+  var techId = techIdParse[0]
+  techId = techId.substr(3);
   console.log("Tech ID: " + techId);
   // Student Name
   var namePattern = /.*\n[P][R][O]/;
-  var name = data.text.match(namePattern);
-  name[0] = name[0].slice(0, -4);
+  var nameParse = data.text.match(namePattern);
+  var name = nameParse[0];
+  name = name.slice(0, -4);
   console.log("Student Name: " + name);
   // Advisor Name
   var advisorPattern = /[A][d][v][i][s][o][r][:].*/;
-  var advisor = data.text.match(advisorPattern);
-  advisor[0] = advisor[0].substr(9);
+  var advisorParse = data.text.match(advisorPattern);
+  var advisor = advisorParse[0];
+  advisor = advisor.substr(9);
   console.log("Advisor: " + advisor);
   // Cumulative GPA
   var cumGpaPattern = /...................................................[0-9]... [G][P][A]/;
-  var cumGpa = data.text.match(cumGpaPattern);
-  cumGpa[0] = cumGpa[0].substr(51);
-  cumGpa[0] = cumGpa[0].slice(0, -3);
+  var cumGpaParse = data.text.match(cumGpaPattern);
+  cumGpaParse[0] = cumGpaParse[0].substr(51);
+  cumGpaParse[0] = cumGpaParse[0].slice(0, -3);
+  var cumGpa = parseFloat(cumGpaParse[0]).toFixed(2);
   console.log("Cumulative GPA: " + cumGpa);
   // Major GPA
   var majorGpaPattern = /[:]............................................[0-9].../;
-  var majorGpa = data.text.match(majorGpaPattern);
-  majorGpa[0] = majorGpa[0].substr(45);
+  var majorGpaParse = data.text.match(majorGpaPattern);
+  majorGpaParse[0] = majorGpaParse[0].substr(45);
+  var majorGpa = parseFloat(majorGpaParse[0]).toFixed(2);
   console.log("Major GPA: " + majorGpa);
   // Minnnesota Transfer Curriculum
   var mtcPattern = /[t]\s[a-z]{3}\s[g][a-z]{6}\s/g;
-  var mtc = data.text.match(mtcPattern);
-  if (mtc == undefined) {
+  var mtcParse = data.text.match(mtcPattern);
+  var mtc = false;
+  if (mtcParse == undefined) {
     console.log("Minnnesota Transfer Curriculum Status: Not Completed")
-  } else if (mtc = "t the general"){
-    console.log("Minnnesota Transfer Curriculum Status: Completed")
   } else {
-    console.log("Minnnesota Transfer Curriculum Status: Not Completed")
+    mtc = true;
+    console.log("Minnnesota Transfer Curriculum Status: Completed")
   }
   // Courses
   var coursePattern = /[A-Z].[0-9]..[A-Z]{2,5}..[0-9]{2,3}...........[^WF][^WF][^WF].*/g;
-  var courses = data.text.match(coursePattern);
+  var courseParse = data.text.match(coursePattern);
+  var academicHistoryParse = [];
   var academicHistory = [];
-  for (var i=0; i<courses.length; i++){
-    courses[i] = courses[i].substr(5);
-    academicHistory.push(courses[i]);
+  for (var i=0; i<courseParse.length; i++){
+    courseParse[i] = courseParse[i].substr(5);
+    academicHistoryParse.push(courseParse[i]);
   }
+  for(let i = 0;i < academicHistoryParse.length; i++){
+    if(academicHistory.indexOf(academicHistoryParse[i]) == -1){
+        academicHistory.push(academicHistoryParse[i])
+    }
+}
   console.log("Academic History:");
   console.log("   Course ID:    Grade:     Course Name:");
-  academicHistory = removeDuplicates(academicHistory);
   console.log(academicHistory);
+  // Legend
+  console.log("--------------  LEGEND  --------------- \n" +
+  "IP    Course  in  progress \n" +
+  "Z     Not  graded  yet \n" +
+  "T     Transfer grade \n" +
+  ">D    Duplicate  (doesn't  count) \n" +
+  ">X    Repeat  (doesn't  count) \n"  +
+  ">R    Repeatable  Course,  counts \n" +
+  "        more  than  once \n" +
+  "RP    Repeated  course  \n" +
+  "(R)   In  course  list,  identifies \n" +
+  "        a  required  course \n" +
+  "---------------------------------------");
 });
