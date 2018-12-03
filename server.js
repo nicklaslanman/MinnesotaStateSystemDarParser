@@ -62,11 +62,11 @@ pdf(dataBuffer).then(function(data) {
   var mtcPattern = /[t]\s[a-z]{3}\s[g][a-z]{6}\s/g;
   var mtc = data.text.match(mtcPattern);
   if (mtc == undefined) {
-    console.log("Minnnesota Transfer Curriculum Completed: Not Completed")
+    console.log("Minnnesota Transfer Curriculum Status: Not Completed")
   } else if (mtc = "t the general"){
     console.log("Minnnesota Transfer Curriculum Status: Completed")
   } else {
-    console.log("Minnnesota Transfer Curriculum Completed: Not Completed")
+    console.log("Minnnesota Transfer Curriculum Status: Not Completed")
   }
   // Courses
   var coursePattern = /[A-Z].[0-9]..[A-Z]{2,5}..[0-9]{2,3}...........[^WF][^WF][^WF].*/g;
