@@ -12,7 +12,7 @@ function removeDuplicates(arr){
 }
 
 // let dataBuffer = fs.readFileSync("test.pdf");
-let dataBuffer = fs.readFileSync("DARs.pdf");
+let dataBuffer = fs.readFileSync("./DARs/CSCI_DARs.pdf");
 
 pdf(dataBuffer).then(function(data) {
   // number of pages
