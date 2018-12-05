@@ -54,7 +54,7 @@ function returnMajorGPA(data) {
     return majorGpa;
 }
 
-// Minnesota Transfer Curriculum
+// Minnesota Transfer Curriculum Status
 function returnMinnTCS(data) {
     var mtcPattern = /[t]\s[a-z]{3}\s[g][a-z]{6}\s/g;
     var mtcParse = data.text.match(mtcPattern);
@@ -66,8 +66,8 @@ function returnMinnTCS(data) {
     }
 }
 
-// Courses
-function returnEnrolledCourses(data) {
+// Full Academic Record
+function returnFullAcademicRecord(data) {
     var coursePattern = /[A-Z].[0-9]..[A-Z]{2,5}..[0-9]{2,3}...........[^WF][^WF][^WF].*/g;
     var courseParse = data.text.match(coursePattern);
     var academicHistoryParse = [];
@@ -86,25 +86,139 @@ function returnEnrolledCourses(data) {
     return academicHistory;
 }
 
+// Course IDs
+function returnCourseIds(data) {
+    var coursePattern = /[A-Z].[0-9]..[A-Z]{2,5}..[0-9]{2,3}...........[^WF][^WF][^WF].*/g;
+    var courseParse = data.text.match(coursePattern);
+    var academicHistoryParse = [];
+    var academicHistory = [];
+    for (var i=0; i<courseParse.length; i++){
+        courseParse[i] = courseParse[i].substr(5);
+        courseParse[i] = courseParse[i].substring(0, 8);
+        academicHistoryParse.push(courseParse[i]);
+    }
+    for(let i = 0;i < academicHistoryParse.length; i++){
+        if(academicHistory.indexOf(academicHistoryParse[i]) == -1){
+            academicHistory.push(academicHistoryParse[i])
+        }
+    }
+    // returns List of Enrolled Course IDs as an Array of Strings
+    //'(Course ID)'
+    return academicHistory;
+}
+
+// Grades
+function returnGrades(data) {
+    var coursePattern = /[A-Z].[0-9]..[A-Z]{2,5}..[0-9]{2,3}...........[^WF][^WF][^WF].*/g;
+    var courseParse = data.text.match(coursePattern);
+    var academicHistoryParse = [];
+    var academicHistory = [];
+    for (var i=0; i<courseParse.length; i++){
+        courseParse[i] = courseParse[i].substr(5);
+        courseParse[i] = courseParse[i].substring(0, 22);
+        academicHistoryParse.push(courseParse[i]);
+    }
+    for(let i = 0;i < academicHistoryParse.length; i++){
+        if(academicHistory.indexOf(academicHistoryParse[i]) == -1){
+            academicHistory.push(academicHistoryParse[i])
+        }
+    }
+    // returns List of Enrolled Course IDs & Grades as an Array of Strings
+    //'(Course ID)       (Credits (#.#)) (Grade)'
+    return academicHistory;
+}
+
+// In Progress Courses
+function returnInProgressCourses(data) {
+    var coursePattern = /[A-Z].[0-9]..[A-Z]{2,5}..[0-9]{2,3}...........[^WF][^WF][^WF].*/g;
+    var courseParse = data.text.match(coursePattern);
+    var academicHistoryParse = [];
+    var academicHistory = [];
+    for (var i=0; i<courseParse.length; i++){
+        courseParse[i] = courseParse[i].substr(5);
+        var x = courseParse[i].substring(22, 24);
+        if (x == "IP") {
+            academicHistoryParse.push(courseParse[i]);
+        }
+    }
+    for(let i = 0;i < academicHistoryParse.length; i++){
+        if(academicHistory.indexOf(academicHistoryParse[i]) == -1){
+            academicHistory.push(academicHistoryParse[i])
+        }
+    }
+    // returns List of In Progress Courses as an Array of Strings
+    //'(Course ID)       (Credits (#.#)) (Grade)   (Additional Info) (Name) '
+    return academicHistory;
+}
+
+// In Progress Course IDs
+function returnInProgressCourseIds(data) {
+    var coursePattern = /[A-Z].[0-9]..[A-Z]{2,5}..[0-9]{2,3}...........[^WF][^WF][^WF].*/g;
+    var courseParse = data.text.match(coursePattern);
+    var academicHistoryParse = [];
+    var academicHistory = [];
+    for (var i=0; i<courseParse.length; i++){
+        courseParse[i] = courseParse[i].substr(5);
+        var x = courseParse[i].substring(22, 24);
+        if (x == "IP") {
+            courseParse[i] = courseParse[i].substring(0, 8);
+            academicHistoryParse.push(courseParse[i]);
+        }
+    }
+    for(let i = 0;i < academicHistoryParse.length; i++){
+        if(academicHistory.indexOf(academicHistoryParse[i]) == -1){
+            academicHistory.push(academicHistoryParse[i])
+        }
+    }
+    // returns List of In Progress Course IDs as an Array of Strings
+    //'(Course ID) '
+    return academicHistory;
+}
+
 // File Path to DARs
 let dataBuffer = fs.readFileSync("path to PDF file...");
 
 // Output
 pdf(dataBuffer).then(function(data) {
+    // Outputting Header
     console.log("--------------  DARs RESULTS  ---------------");
+    // Outputting Tech ID
     console.log("Tech ID: " + returnTechID(data)); 
+    // Outputting Student Name
     console.log("Student Name: " + returnStudentName(data));
+    // Outputting Advisor
     console.log("Advisor: " + returnAdvisorName(data));
+    // Outputting Cumulative GPA
     console.log("Cumulative GPA: " + returnCumulativeGPA(data));
+    // Outputting Major GPA
     console.log("Major GPA: " + returnMajorGPA(data));
+    // Outputting Minnesota Transfer Curriculum Status
     if (returnMinnTCS(data) == false) {
         console.log("Minnnesota Transfer Curriculum Status: Not Completed")
     } else {
         console.log("Minnnesota Transfer Curriculum Status: Completed")
     }
+    // Outputting Full Academic Record
     console.log("Academic History:");
     console.log("   Course ID:    Grade:     Course Name:");
-    console.log(returnEnrolledCourses(data));
+    console.log(returnFullAcademicRecord(data));
+    // Outputting Course IDs
+    console.log("Enrolled Course IDs:");
+    console.log("   Course ID:");
+    console.log(returnCourseIds(data));
+    // Outputting Grades
+    console.log("Grades:");
+    console.log("   Course ID:    Grade:");
+    console.log(returnGrades(data));
+    // Outputting In Progress Courses
+    console.log("In Progress Courses:");
+    console.log("   Course ID:    Grade:     Course Name:");
+    console.log(returnInProgressCourses(data));
+    // Outputting In Progress Course IDs
+    console.log("In Progress Course IDs:");
+    console.log("   Course ID:");
+    console.log(returnInProgressCourseIds(data));
+    // Outputting Legend
     console.log("-----------------  LEGEND  ------------------ \n" +
         "IP    Course  in  progress \n" +
         "Z     Not  graded  yet \n" +
