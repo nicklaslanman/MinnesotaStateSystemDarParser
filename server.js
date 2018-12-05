@@ -187,7 +187,7 @@ pdf(dataBuffer).then(function(data) {
     // Outputting Student Name
     console.log("Student Name: " + returnStudentName(data));
     // Outputting Advisor
-    console.log("Advisor: " + returnAdvisorName(data));
+    console.log("Advisor Name: " + returnAdvisorName(data));
     // Outputting Cumulative GPA
     console.log("Cumulative GPA: " + returnCumulativeGPA(data));
     // Outputting Major GPA
@@ -204,7 +204,6 @@ pdf(dataBuffer).then(function(data) {
     console.log(returnFullAcademicRecord(data));
     // Outputting Course IDs
     console.log("Enrolled Course IDs:");
-    console.log("   Course ID:");
     console.log(returnCourseIds(data));
     // Outputting Grades
     console.log("Grades:");
@@ -216,7 +215,6 @@ pdf(dataBuffer).then(function(data) {
     console.log(returnInProgressCourses(data));
     // Outputting In Progress Course IDs
     console.log("In Progress Course IDs:");
-    console.log("   Course ID:");
     console.log(returnInProgressCourseIds(data));
     // Outputting Legend
     console.log("-----------------  LEGEND  ------------------ \n" +
