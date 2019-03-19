@@ -23,7 +23,7 @@ function returnStudentName(data) {
   return name;
 }
 
-// // Student Classification
+// Student Classification
 function returnStudentClassification(data) {
   var studentClassificationPattern = /(Classification:)\s[A-Z][A-Z]/;
   var studentClassificationParse = data.text.match(studentClassificationPattern);
@@ -80,97 +80,166 @@ function returnMinnTCS(data) {
 function returnACTCompositeScore(data) {
   var actCompositeScorePattern = /(ACT Composite Score:).\d\d/;
   var actCompositeScoreParse = data.text.match(actCompositeScorePattern);
-  // var actCompositeScore = actCompositeScoreParse[0]
+  if (actCompositeScoreParse == null) {
+      // returns N/A
+      return "N/A"
+  } 
   actCompositeScoreParse[0] = actCompositeScoreParse[0].slice(-2);
   var actCompositeScore = parseInt(actCompositeScoreParse[0]);
   // returns ACT Composite Score as Integer
   return actCompositeScore;
 }
 
-// // ACT Math Score
+// ACT Math Score
 // function returnACTMathScore(data){
 //     var actMathScorePattern = ;
 //     var actMathScoreParse = data.text.match(actMathScorePattern);
-//     var actMathScore = actMathScoreParse[0]
-//     actMathScore = actMathScore.substr(3);
-//     var actMathScore = parseint(actMathScore);
+//     if (actCompositeScoreParse == null) {
+//         // returns N/A
+//         return "N/A"
+//     } 
+//     actMathScoreParse[0] = actMathScoreParse[0].slice(-2);
+//     var actMathScore = parseInt(actMathScoreParse[0]);
 //     // returns ACT Math Score as Integer
 //     return actMathScore;
 // }
 
-// // ACT English Score
+// ACT English Score
 // function returnACTEnglishScore(data){
 //     var actEnglishScorePattern = ;
 //     var actEnglishScoreParse = data.text.match(actEnglishScorePattern);
-//     var actEnglishScore = actEnglishScoreParse[0]
-//     actEnglishScore = actEnglishScore.substr(3);
-//     var actEnglishScore = parseint(actEnglishScore);
+//     if (actEnglishScoreParse == null) {
+//         // returns N/A
+//         return "N/A"
+//     } 
+//     actEnglishScoreParse[0] = actEnglishScoreParse[0].slice(-2);
+//     var actEnglishScore = parseInt(actEnglishScoreParse[0]);
 //     // returns ACT English Score as Integer
 //     return actEnglishScore;
 // }
 
-// // ACT Reading Score
+// ACT Reading Score
 // function returnACTReadingScore(data){
 //     var actReadingScorePattern = ;
 //     var actReadingScoreParse = data.text.match(actReadingScorePattern);
-//     var actReadingScore = actReadingScoreParse[0]
-//     actReadingScore = actReadingScore.substr(3);
-//     var actReadingScore = parseint(actReadingScore);
+//     if (actReadingScoreParse == null) {
+//         // returns N/A
+//         return "N/A"
+//     } 
+//     actReadingScoreParse[0] = actReadingScoreParse[0].slice(-2);
+//     var actReadingScore = parseInt(actReadingScoreParse[0]);
 //     // returns ACT Reading Score as Integer
 //     return actReadingScore;
 // }
 
-// // ACT Science Reasoning Score
+// ACT Science Reasoning Score
 // function returnACTReadingScore(data){
 //     var actScienceReasoningScorePattern = ;
 //     var actScienceReasoningScoreParse = data.text.match(actScienceReasoningScorePattern);
-//     var actScienceReasoningScore = actScienceReasoningScoreParse[0]
-//     actScienceReasoningScore = actScienceReasoningScore.substr(3);
-//     var actScienceReasoningScore = parseint(actScienceReasoningScore);
+//     if (actScienceReasoningScoreParse == null) {
+//         // returns N/A
+//         return "N/A"
+//     } 
+//     actScienceReasoningScoreParse[0] = actScienceReasoningScoreParse[0].slice(-2);
+//     var actScienceReasoningScore = parseInt(actScienceReasoningScoreParse[0]);
 //     // returns ACT Science Reasoning Score as Integer
 //     return actScienceReasoningScore;
 // }
 
-// // Accuplacer Reading Comprehension Score
+// ACT English Writing Combo Score
+// function returnEnglishWritingComboScore(data){
+//     var englishWritingComboScorePattern = ;
+//     var englishWritingComboScoreParse = data.text.match(englishWritingComboScorePattern);
+//     if (englishWritingComboScoreParse == null) {
+//         // returns N/A
+//         return "N/A"
+//     } 
+//     englishWritingComboScoreParse[0] = englishWritingComboScoreParse[0].slice(-2);
+//     var englishWritingComboScore = parseInt(englishWritingComboScoreParse[0]);
+//     // returns ACT English Writing Combo Score as Integer
+//     return englishWritingComboScore;
+// }
+
+// ACT Writing Subject Score
+// function returnWritingSubjectScore(data){
+//     var writingSubjectScorePattern = ;
+//     var writingSubjectScoreParse = data.text.match(writingSubjectScorePattern);
+//     if (writingSubjectScoreParse == null) {
+//         // returns N/A
+//         return "N/A"
+//     } 
+//     writingSubjectScoreParse[0] = writingSubjectScoreParse[0].slice(-2);
+//     var writingSubjectScore = parseInt(writingSubjectScoreParse[0]);
+//     // returns ACT Writing Subject Score as Integer
+//     return writingSubjectScore;
+// }
+
+// ACT Writing Domain Score
+// function returnWritingDomainScore(data){
+//     var writingDomainScorePattern = ;
+//     var writingDomainScoreParse = data.text.match(writingDomainScorePattern);
+//     if (writingDomainScoreParse == null) {
+//         // returns N/A
+//         return "N/A"
+//     } 
+//     writingDomainScoreParse[0] = writingDomainScoreParse[0].slice(-2);
+//     var writingDomainScore = parseInt(writingDomainScoreParse[0]);
+//     // returns ACT Writing Domain Score as Integer
+//     return writingDomainScore;
+// }
+
+// Accuplacer Reading Comprehension Score
 // function returnAccuplacerReadingComprehensionScore(data){
 //     var accuplacerReadingComprehensionScorePattern = ;
 //     var accuplacerReadingComprehensionScoreParse = data.text.match(accuplacerReadingComprehensionScorePattern);
-//     var accuplacerReadingComprehensionScore = accuplacerReadingComprehensionScoreParse[0]
-//     accuplacerReadingComprehensionScore = accuplacerReadingComprehensionScore.substr(3);
-//     var accuplacerReadingComprehensionScore = parseint(accuplacerReadingComprehensionScore);
+//     if (accuplacerReadingComprehensionScoreParse == null) {
+//         // returns N/A
+//         return "N/A"
+//     } 
+//     accuplacerReadingComprehensionScoreParse[0] = accuplacerReadingComprehensionScoreParse[0].slice(-2);
+//     var accuplacerReadingComprehensionScore = parseInt(accuplacerReadingComprehensionScoreParse[0]);
 //     // returns Accuplacer Reading Comprehension Score as Integer
 //     return accuplacerReadingComprehensionScore;
 // }
 
-// // Accuplacer Sentence Skills Score
+// Accuplacer Sentence Skills Score
 // function returnAccuplacerSentenceSkillsScore(data){
 //     var accuplacerSentenceSkillsScorePattern = ;
 //     var accuplacerSentenceSkillsScoreParse = data.text.match(accuplacerSentenceSkillsScorePattern);
-//     var accuplacerSentenceSkillsScore = accuplacerSentenceSkillsScoreParse[0]
-//     accuplacerSentenceSkillsScore = accuplacerSentenceSkillsScore.substr(3);
-//     var accuplacerSentenceSkillsScore = parseint(accuplacerSentenceSkillsScore);
+//     if (accuplacerSentenceSkillsScoreParse == null) {
+//         // returns N/A
+//         return "N/A"
+//     } 
+//     accuplacerSentenceSkillsScoreParse[0] = accuplacerSentenceSkillsScoreParse[0].slice(-2);
+//     var accuplacerSentenceSkillsScore = parseInt(accuplacerSentenceSkillsScoreParse[0]);
 //     // returns Accuplacer Sentence Skills Score as Integer
 //     return accuplacerSentenceSkillsScore;
 // }
 
-// // Accuplacer Elementary Algebra Score
+// Accuplacer Elementary Algebra Score
 // function returnAccuplacerSentenceSkillsScore(data){
 //     var accuplacerElementaryAlgebraScorePattern = ;
 //     var accuplacerElementaryAlgebraScoreParse = data.text.match(accuplacerElementaryAlgebraScorePattern);
-//     var accuplacerElementaryAlgebraScore = accuplacerElementaryAlgebraScoreParse[0]
-//     accuplacerElementaryAlgebraScore = accuplacerElementaryAlgebraScore.substr(3);
-//     var accuplacerElementaryAlgebraScore = parseint(accuplacerElementaryAlgebraScore);
+//     if (accuplacerElementaryAlgebraScoreParse == null) {
+//         // returns N/A
+//         return "N/A"
+//     } 
+//     accuplacerElementaryAlgebraScoreParse[0] = accuplacerElementaryAlgebraScoreParse[0].slice(-2);
+//     var accuplacerElementaryAlgebraScore = parseInt(accuplacerElementaryAlgebraScoreParse[0]);
 //     // returns Accuplacer Elementary Algebra Score as Integer
 //     return accuplacerElementaryAlgebraScore;
 // }
 
-// // Accuplacer College Level Math Score
+// Accuplacer College Level Math Score
 // function returnAccuplacerCollegeLevelMathScore(data){
 //     var accuplacerCollegeLevelMathScorePattern = ;
 //     var accuplacerCollegeLevelMathScoreParse = data.text.match(accuplacerCollegeLevelMathScorePattern);
-//     var accuplacerCollegeLevelMathScore = accuplacerCollegeLevelMathScoreParse[0]
-//     accuplacerCollegeLevelMathScore = accuplacerCollegeLevelMathScore.substr(3);
-//     var accuplacerCollegeLevelMathScore = parseint(accuplacerCollegeLevelMathScore);
+//     if (accuplacerCollegeLevelMathScoreParse == null) {
+//         // returns N/A
+//         return "N/A"
+//     } 
+//     accuplacerCollegeLevelMathScoreParse[0] = accuplacerCollegeLevelMathScoreParse[0].slice(-2);
+//     var accuplacerCollegeLevelMathScore = parseInt(accuplacerCollegeLevelMathScoreParse[0]);
 //     // returns Accuplacer College Level Score as Integer
 //     return accuplacerCollegeLevelMathScore;
 // }
@@ -285,7 +354,10 @@ function returnInProgressCourseIds(data) {
 }
 
 // File Path to DARs
-let dataBuffer = fs.readFileSync("Adam_Walley_DAR22.pdf");
+//let dataBuffer = fs.readFileSync("Path to DARs...");
+//let dataBuffer = fs.readFileSync("Adam_Walley_DAR22.pdf");
+//let dataBuffer = fs.readFileSync("DARs/SE_DARs.pdf");
+let dataBuffer = fs.readFileSync("DARs/Transfer_DARs.pdf");
 
 // Output
 pdf(dataBuffer).then(function (data) {
@@ -309,23 +381,29 @@ pdf(dataBuffer).then(function (data) {
   } else {
     console.log("Minnnesota Transfer Curriculum Status: Completed");
   }
-  // // Outputting ACT Composite Score
+  // Outputting ACT Composite Score
   console.log("ACT Composite Score: " + returnACTCompositeScore(data));
-  // // Outputting ACT Math Score
+  // Outputting ACT Math Score
   // console.log("ACT Math Score: " + returnACTMathScore(data));
-  // // Outputting ACT English Score
+  // Outputting ACT English Score
   // console.log("ACT English Score: " + returnACTEnglishScore(data));
-  // // Outputting ACT Reading Score
+  // Outputting ACT Reading Score
   // console.log("ACT Reading Score: " + returnACTReadingScore(data));
-  // // Outputting ACT Science Reasoning Score
+  // Outputting ACT Science Reasoning Score
   // console.log("ACT Science Reasoning Score: " + returnACTScienceReasoningScore(data));
-  // // Outputting Accuplacer Reading Comprehension Score
+  // Outputting ACT English Writing Combo Score
+  // console.log("ACT English Writing Combo Score: " + returnACTEnglishWritingComboScore(data));
+  // Outputting ACT Writing Subject Score
+  // console.log("ACT Writing Subject Score: " + returnACTWritingSubjectScore(data));
+  // Outputting ACT Writing Domain Score
+  // console.log("ACT Writing Domain Score: " + returnACTWritingDomainScore(data));
+  // Outputting Accuplacer Reading Comprehension Score
   // console.log("Accuplacer Reading Comprehension Score: " + returnAccuplacerReadingComprehensionScore(data));
-  // // Outputting Accuplacer Sentence Skills Score
+  // Outputting Accuplacer Sentence Skills Score
   // console.log("Accuplacer Sentence Skills Score: " + returnAccuplacerSentenceSkillsScore(data));
-  // // Outputting Accuplacer Elementary Algebra Score
+  // Outputting Accuplacer Elementary Algebra Score
   // console.log("Accuplacer Elementary Algebra Score: " + returnAccuplacerElementaryAlgebraScore(data));
-  // // Outputting Accuplacer College Level Math Score
+  // Outputting Accuplacer College Level Math Score
   // console.log("Accuplacer College Level Math Score: " + returnAccuplacerCollegeLevelMathScore(data));
   // Outputting Full Academic Record
   console.log("Academic History:");
