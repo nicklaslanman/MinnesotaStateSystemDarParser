@@ -4,8 +4,8 @@ var parser = require("./parser")
 
 // File Path to DARs
 //let dataBuffer = fs.readFileSync("Path to DARs...");
-//let dataBuffer = fs.readFileSync("Adam_Walley_DAR22.pdf");
-let dataBuffer = fs.readFileSync("DARs/SE_DARs.pdf");
+let dataBuffer = fs.readFileSync("DARs/Andrew_Dars.pdf");
+//let dataBuffer = fs.readFileSync("DARs/SE_DARs.pdf");
 //let dataBuffer = fs.readFileSync("DARs/Transfer_DARs.pdf");
 
 // Output
@@ -33,27 +33,27 @@ pdf(dataBuffer).then(function (data) {
   // Outputting ACT Composite Score
   console.log("ACT Composite Score: " + parser.returnACTCompositeScore(data));
   // Outputting ACT Math Score
-  // console.log("ACT Math Score: " + parser.returnACTMathScore(data));
+  console.log("ACT Math Score: " + parser.returnACTMathScore(data));
   // Outputting ACT English Score
-  // console.log("ACT English Score: " + parser.returnACTEnglishScore(data));
+  console.log("ACT English Score: " + parser.returnACTEnglishScore(data));
   // Outputting ACT Reading Score
-  // console.log("ACT Reading Score: " + parser.returnACTReadingScore(data));
+  console.log("ACT Reading Score: " + parser.returnACTReadingScore(data));
   // Outputting ACT Science Reasoning Score
-  // console.log("ACT Science Reasoning Score: " + parser.returnACTScienceReasoningScore(data));
+  console.log("ACT Science Reasoning Score: " + parser.returnACTScienceReasoningScore(data));
   // Outputting ACT English Writing Combo Score
-  // console.log("ACT English Writing Combo Score: " + parser.returnACTEnglishWritingComboScore(data));
+  console.log("ACT English Writing Combo Score: " + parser.returnACTEnglishWritingComboScore(data));
   // Outputting ACT Writing Subject Score
-  // console.log("ACT Writing Subject Score: " + parser.returnACTWritingSubjectScore(data));
+  console.log("ACT Writing Subject Score: " + parser.returnACTWritingSubjectScore(data));
   // Outputting ACT Writing Domain Score
-  // console.log("ACT Writing Domain Score: " + parser.returnACTWritingDomainScore(data));
+  console.log("ACT Writing Domain Score: " + parser.returnACTWritingDomainScore(data));
   // Outputting Accuplacer Reading Comprehension Score
-  // console.log("Accuplacer Reading Comprehension Score: " + parser.returnAccuplacerReadingComprehensionScore(data));
+  console.log("Accuplacer Reading Comprehension Score: " + parser.returnAccuplacerReadingComprehensionScore(data));
   // Outputting Accuplacer Sentence Skills Score
-  // console.log("Accuplacer Sentence Skills Score: " + parser.returnAccuplacerSentenceSkillsScore(data));
+  console.log("Accuplacer Sentence Skills Score: " + parser.returnAccuplacerSentenceSkillsScore(data));
   // Outputting Accuplacer Elementary Algebra Score
-  // console.log("Accuplacer Elementary Algebra Score: " + parser.returnAccuplacerElementaryAlgebraScore(data));
+  console.log("Accuplacer Elementary Algebra Score: " + parser.returnAccuplacerElementaryAlgebraScore(data));
   // Outputting Accuplacer College Level Math Score
-  // console.log("Accuplacer College Level Math Score: " + parser.returnAccuplacerCollegeLevelMathScore(data));
+  console.log("Accuplacer College Level Math Score: " + parser.returnAccuplacerCollegeLevelMathScore(data));
   // Outputting Full Academic Record
   console.log("Academic History:");
   console.log("   Course ID:    Grade:     Course Name:");
