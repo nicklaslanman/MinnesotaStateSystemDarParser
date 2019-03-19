@@ -4,9 +4,7 @@ var parser = require("./parser")
 
 // File Path to DARs
 //let dataBuffer = fs.readFileSync("Path to DARs...");
-let dataBuffer = fs.readFileSync("DARs/Andrew_Dars.pdf");
-//let dataBuffer = fs.readFileSync("DARs/SE_DARs.pdf");
-//let dataBuffer = fs.readFileSync("DARs/Transfer_DARs.pdf");
+let dataBuffer = fs.readFileSync("DARs/SE_DARs1.pdf");
 
 // Output
 pdf(dataBuffer).then(function (data) {

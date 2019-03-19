@@ -46,6 +46,10 @@ module.exports = {
   returnCumulativeGPA: function (data) {
     var cumGpaPattern = /...................................................[0-9]... [G][P][A]/;
     var cumGpaParse = data.text.match(cumGpaPattern);
+    if (cumGpaParse == null) {
+        // returns N/A
+        return "N/A"
+      }
     cumGpaParse[0] = cumGpaParse[0].substr(51);
     cumGpaParse[0] = cumGpaParse[0].slice(0, -3);
     var cumGpa = parseFloat(cumGpaParse[0]).toFixed(2);
@@ -57,6 +61,10 @@ module.exports = {
   returnMajorGPA: function (data) {
     var majorGpaPattern = /[:]............................................[0-9].../;
     var majorGpaParse = data.text.match(majorGpaPattern);
+    if (majorGpaParse == null) {
+        // returns N/A
+        return "N/A"
+      }
     majorGpaParse[0] = majorGpaParse[0].substr(45);
     var majorGpa = parseFloat(majorGpaParse[0]).toFixed(2);
     // returns Major GPA as a Float (#.##)
@@ -147,44 +155,44 @@ module.exports = {
 
   //ACT English Writing Combo Score
   returnACTEnglishWritingComboScore: function (data) {
-    var englishWritingComboScorePattern = /(ACT English Writing Combo Score:).*/;
-    var englishWritingComboScoreParse = data.text.match(englishWritingComboScorePattern);
-    if (englishWritingComboScoreParse == null) {
+    var atcEnglishWritingComboScorePattern = /(ACT English Writing Combo Score:).*/;
+    var atcEnglishWritingComboScoreParse = data.text.match(atcEnglishWritingComboScorePattern);
+    if (atcEnglishWritingComboScoreParse == null) {
       // returns N/A
       return "N/A"
     }
-    englishWritingComboScoreParse[0] = englishWritingComboScoreParse[0].slice(-4);
-    var englishWritingComboScore = parseInt(englishWritingComboScoreParse[0]);
+    atcEnglishWritingComboScoreParse[0] = atcEnglishWritingComboScoreParse[0].slice(-4);
+    var atcEnglishWritingComboScore = parseInt(atcEnglishWritingComboScoreParse[0]);
     // returns ACT English Writing Combo Score as Integer
-    return englishWritingComboScore;
+    return atcEnglishWritingComboScore;
   },
 
   // ACT Writing Subject Score
   returnACTWritingSubjectScore: function (data) {
-    var writingSubjectScorePattern = /(ACT Writing Subject Score Score:).*/;
-    var writingSubjectScoreParse = data.text.match(writingSubjectScorePattern);
-    if (writingSubjectScoreParse == null) {
+    var atcWritingSubjectScorePattern = /(ACT Writing Subject Score Score:).*/;
+    var atcWritingSubjectScoreParse = data.text.match(atcWritingSubjectScorePattern);
+    if (atcWritingSubjectScoreParse == null) {
       // returns N/A
       return "N/A"
     }
-    writingSubjectScoreParse[0] = writingSubjectScoreParse[0].slice(-4);
-    var writingSubjectScore = parseInt(writingSubjectScoreParse[0]);
+    atcWritingSubjectScoreParse[0] = atcWritingSubjectScoreParse[0].slice(-4);
+    var atcWritingSubjectScore = parseInt(atcWritingSubjectScoreParse[0]);
     // returns ACT Writing Subject Score as Integer
-    return writingSubjectScore;
+    return atcWritingSubjectScore;
   },
 
   //ACT Writing Domain Score
   returnACTWritingDomainScore: function (data) {
-    var writingDomainScorePattern = /(ACT Writing Domain).*/;
-    var writingDomainScoreParse = data.text.match(writingDomainScorePattern);
-    if (writingDomainScoreParse == null) {
+    var atcWritingDomainScorePattern = /(ACT Writing Domain).*/;
+    var atcWritingDomainScoreParse = data.text.match(atcWritingDomainScorePattern);
+    if (atcWritingDomainScoreParse == null) {
       // returns N/A
       return "N/A"
     }
-    writingDomainScoreParse[0] = writingDomainScoreParse[0].slice(-4);
-    var writingDomainScore = parseInt(writingDomainScoreParse[0]);
+    atcWritingDomainScoreParse[0] = atcWritingDomainScoreParse[0].slice(-4);
+    var atcWritingDomainScore = parseInt(atcWritingDomainScoreParse[0]);
     // returns ACT Writing Domain Score as Integer
-    return writingDomainScore;
+    return atcWritingDomainScore;
   },
 
   //Accuplacer Reading Comprehension Score
