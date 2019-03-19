@@ -3,8 +3,7 @@ const pdf = require("pdf-parse");
 var parser = require("./parser")
 
 // File Path to DARs
-//let dataBuffer = fs.readFileSync("Path to DARs...");
-let dataBuffer = fs.readFileSync("DARs/SE_DARs1.pdf");
+let dataBuffer = fs.readFileSync("Path to DARs...");
 
 // Output
 pdf(dataBuffer).then(function (data) {

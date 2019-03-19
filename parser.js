@@ -6,6 +6,10 @@ module.exports = {
   returnTechID: function (data) {
     var techIdPattern = /[:]\d\d\d\d\d\d\d\d\d\d/;
     var techIdParse = data.text.match(techIdPattern);
+    if (techIdParse == null) {
+      // returns N/A
+      return "N/A"
+    }
     var techId = techIdParse[0];
     techId = techId.substr(3);
     // returns Tech ID as a String
@@ -16,6 +20,10 @@ module.exports = {
   returnStudentName: function (data) {
     var namePattern = /.*\n[P][R][O]/;
     var nameParse = data.text.match(namePattern);
+    if (nameParse == null) {
+      // returns N/A
+      return "N/A"
+    }
     var name = nameParse[0];
     name = name.slice(0, -4);
     // returns Student Name as a String
@@ -26,6 +34,10 @@ module.exports = {
   returnStudentClassification: function (data) {
     var studentClassificationPattern = /(Classification:)\s[A-Z][A-Z]/;
     var studentClassificationParse = data.text.match(studentClassificationPattern);
+    if (studentClassificationParse == null) {
+      // returns N/A
+      return "N/A"
+    }
     var studentClassification = studentClassificationParse[0];
     studentClassification = studentClassification.substr(16);
     // returns Student Classification as a String
@@ -36,6 +48,10 @@ module.exports = {
   returnAdvisorName: function (data) {
     var advisorPattern = /[A][d][v][i][s][o][r][:].*/;
     var advisorParse = data.text.match(advisorPattern);
+    if (advisorParse == null) {
+      // returns N/A
+      return "N/A"
+    }
     var advisor = advisorParse[0];
     advisor = advisor.substr(9);
     // returns Advisor Name as a String
