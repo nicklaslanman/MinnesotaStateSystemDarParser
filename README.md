@@ -12,7 +12,7 @@ will result in a version mismatch and leave your DARs unable to be parsed. Also,
 select 'Save as...' after right clicking on the DARs, this will save your file as an 
 html and not a pdf.
 
-To use replace line 179 in server.js with a path to your DARs & open terminal
+To use replace line 288 in server.js with a path to your DARs & open terminal
 npm install
 npm install pdf-parse
 nodemon server.js
