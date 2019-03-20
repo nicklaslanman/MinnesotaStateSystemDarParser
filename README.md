@@ -1,7 +1,7 @@
 # MinnesotaStateSystemDarsParser
-Generic parser that returns tech ID, student name, advisor name, cumulative GPA, major GPA, 
-Minnesota State Transfer Curriculum status & course IDs, grades, and course names of 
-completed and currently enrolled courses.
+Generic parser that returns student ID, student name, student classification, advisor name, 
+major and cumulative GPA's, standardized test results, course IDs, grades, 
+and course names of completed and currently enrolled courses.
 
 To get a copy of your DARs, sign into your school's eservices page -> select the 
 'Academic Records' tab -> select 'Degree Audit Report' -> select your current 
