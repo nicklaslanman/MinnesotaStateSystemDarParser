@@ -37,12 +37,6 @@ pdf(dataBuffer).then(function (data) {
   console.log("ACT Reading Score: " + parser.returnACTReadingScore(data));
   // Outputting ACT Science Reasoning Score
   console.log("ACT Science Reasoning Score: " + parser.returnACTScienceReasoningScore(data));
-  // Outputting ACT English Writing Combo Score
-  console.log("ACT English Writing Combo Score: " + parser.returnACTEnglishWritingComboScore(data));
-  // Outputting ACT Writing Subject Score
-  console.log("ACT Writing Subject Score: " + parser.returnACTWritingSubjectScore(data));
-  // Outputting ACT Writing Domain Score
-  console.log("ACT Writing Domain Score: " + parser.returnACTWritingDomainScore(data));
   // Outputting Accuplacer Reading Comprehension Score
   console.log("Accuplacer Reading Comprehension Score: " + parser.returnAccuplacerReadingComprehensionScore(data));
   // Outputting Accuplacer Sentence Skills Score

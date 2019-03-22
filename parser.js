@@ -169,48 +169,6 @@ module.exports = {
     return actScienceReasoningScore;
   },
 
-  //ACT English Writing Combo Score
-  returnACTEnglishWritingComboScore: function (data) {
-    var atcEnglishWritingComboScorePattern = /(ACT English Writing Combo Score:).*/;
-    var atcEnglishWritingComboScoreParse = data.text.match(atcEnglishWritingComboScorePattern);
-    if (atcEnglishWritingComboScoreParse == null) {
-      // returns N/A
-      return "N/A"
-    }
-    atcEnglishWritingComboScoreParse[0] = atcEnglishWritingComboScoreParse[0].slice(-4);
-    var atcEnglishWritingComboScore = parseInt(atcEnglishWritingComboScoreParse[0]);
-    // returns ACT English Writing Combo Score as Integer
-    return atcEnglishWritingComboScore;
-  },
-
-  // ACT Writing Subject Score
-  returnACTWritingSubjectScore: function (data) {
-    var atcWritingSubjectScorePattern = /(ACT Writing Subject Score Score:).*/;
-    var atcWritingSubjectScoreParse = data.text.match(atcWritingSubjectScorePattern);
-    if (atcWritingSubjectScoreParse == null) {
-      // returns N/A
-      return "N/A"
-    }
-    atcWritingSubjectScoreParse[0] = atcWritingSubjectScoreParse[0].slice(-4);
-    var atcWritingSubjectScore = parseInt(atcWritingSubjectScoreParse[0]);
-    // returns ACT Writing Subject Score as Integer
-    return atcWritingSubjectScore;
-  },
-
-  //ACT Writing Domain Score
-  returnACTWritingDomainScore: function (data) {
-    var atcWritingDomainScorePattern = /(ACT Writing Domain).*/;
-    var atcWritingDomainScoreParse = data.text.match(atcWritingDomainScorePattern);
-    if (atcWritingDomainScoreParse == null) {
-      // returns N/A
-      return "N/A"
-    }
-    atcWritingDomainScoreParse[0] = atcWritingDomainScoreParse[0].slice(-4);
-    var atcWritingDomainScore = parseInt(atcWritingDomainScoreParse[0]);
-    // returns ACT Writing Domain Score as Integer
-    return atcWritingDomainScore;
-  },
-
   //Accuplacer Reading Comprehension Score
   returnAccuplacerReadingComprehensionScore: function (data) {
     var accuplacerReadingComprehensionScorePattern = /(Accuplacer Reading Comprehension Score:).*/;
