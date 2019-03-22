@@ -1,6 +1,6 @@
 # MinnesotaStateSystemDarsParser
 Generic parser that returns student ID, student name, student classification, advisor name, 
-major and cumulative GPA's, standardized test results, course IDs, grades, 
+major and cumulative GPA's, ACT & Accuplacer test results, course IDs, grades, 
 and course names of completed and currently enrolled courses.
 
 Note: this method only works on Google Chrome. To get a copy of your DARs, sign into your 

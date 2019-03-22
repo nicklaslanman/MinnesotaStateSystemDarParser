@@ -240,6 +240,7 @@ module.exports = {
         academicHistory.push(academicHistoryParse[i]);
       }
     }
+    academicHistory.sort();
     // returns List of Enrolled Courses as an Array of Strings
     //'(Course ID)       (Credits (#.#)) (Grade)   (Additional Info) (Name) '
     return academicHistory;
