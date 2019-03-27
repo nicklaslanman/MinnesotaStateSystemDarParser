@@ -1,9 +1,10 @@
-# MinnesotaStateSystemDarsParser
+# MinnesotaStateSystemDarParser
 Generic PDF parser that returns student ID, student name, student classification, 
 advisor name, major and cumulative GPA's, ACT & Accuplacer test results, course IDs, 
-grades, and course names of completed and currently enrolled courses.
+grades, and course names of completed and currently enrolled courses from a MinnState 
+Degree Audit Report (DAR).
 
-Note: this method only works on Google Chrome. To get a copy of your DARs, sign into your 
+Note: this method only works on Google Chrome. To get a copy of your DAR, sign into your 
 school's eservices page -> select the 'Academic Records' tab -> select 'Degree Audit 
 Report' -> select your current major -> right click on the DARs, select 'Print...' -> in 
 print preview, click the change button on 'Destination' and select 'Save as PDF' -> save 
@@ -13,7 +14,7 @@ be parsed. Also, DO NOT select 'Save as...' after right clicking on the DARs, th
 save your file as an html and not a pdf.
 
 To use: 
-replace line 6 in server.js with a path to your DARs & open terminal
+replace line 6 in server.js with a path to your DAR & open terminal
 npm install
 npm install pdf-parse
 nodemon server.js
