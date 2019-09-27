@@ -63,9 +63,9 @@ module.exports = {
     var cumGpaPattern = /...................................................[0-9]... [G][P][A]/;
     var cumGpaParse = data.text.match(cumGpaPattern);
     if (cumGpaParse == null) {
-        // returns N/A
-        return "N/A"
-      }
+      // returns N/A
+      return "N/A"
+    }
     cumGpaParse[0] = cumGpaParse[0].substr(51);
     cumGpaParse[0] = cumGpaParse[0].slice(0, -3);
     var cumGpa = parseFloat(cumGpaParse[0]).toFixed(2);
@@ -78,9 +78,9 @@ module.exports = {
     var majorGpaPattern = /[:]............................................[0-9].../;
     var majorGpaParse = data.text.match(majorGpaPattern);
     if (majorGpaParse == null) {
-        // returns N/A
-        return "N/A"
-      }
+      // returns N/A
+      return "N/A"
+    }
     majorGpaParse[0] = majorGpaParse[0].substr(45);
     var majorGpa = parseFloat(majorGpaParse[0]).toFixed(2);
     // returns Major GPA as a Float (#.##)
