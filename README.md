@@ -17,4 +17,4 @@ To use:
 replace line 6 in server.js with a path to your DAR & open terminal
 npm install
 npm install pdf-parse
-nodemon server.js
+node server.js
