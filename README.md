@@ -14,7 +14,7 @@ be parsed. Also, DO NOT select 'Save as...' after right clicking on the DARs, th
 save your file as an html and not a pdf.
 
 To use: 
-replace line 6 in server.js with a path to your DAR & open terminal
-npm install
-npm install pdf-parse
-node server.js
+replace line 6 in server.js with a path to your DAR & open terminal <br />
+npm install <br />
+npm install pdf-parse <br />
+node server.js <br />
