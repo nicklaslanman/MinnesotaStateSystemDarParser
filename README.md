@@ -13,7 +13,7 @@ print destination as this will result in a version mismatch and leave your DARs 
 be parsed. Also, DO NOT select 'Save as...' after right clicking on the DARs, this will 
 save your file as an html and not a pdf.
 
-To use: 
+To use: <br />
 replace line 6 in server.js with a path to your DAR & open terminal <br />
 npm install <br />
 npm install pdf-parse <br />
