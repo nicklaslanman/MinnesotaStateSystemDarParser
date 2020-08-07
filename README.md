@@ -1,4 +1,4 @@
-# MinnesotaStateSystemDarParser
+# Minnesota State System DAR Parser
 Generic PDF parser that returns student ID, student name, student classification, 
 advisor name, major and cumulative GPA's, ACT & Accuplacer test results, course IDs, 
 grades, and course names of completed and currently enrolled courses from a MinnState 
